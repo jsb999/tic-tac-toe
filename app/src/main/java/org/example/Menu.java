@@ -3,6 +3,8 @@ package org.example;
 import java.util.Scanner;
 
 public class Menu{
+  private Scanner input = new Scanner(System.in);
+  
   public void loadGame(){
     System.out.println("Welcome to Tic-Tac-Toe!\n");
     mainMenu();
@@ -77,8 +79,10 @@ public class Menu{
     boolean whosTurn = true; // true = X, false = O
     int turn = 1;
 
+    
     while (board.checkWin() == 1 && turn <= 9){
       System.out.println(board.toString());
+      System.out.println("It is " + (whosTurn ? "X" : "O") + "'s turn.");
       int userInput = getIntInput("Enter the number of the square you would like to place your piece: ");
       
       if (userInput < 1 || userInput > 9){
@@ -94,6 +98,8 @@ public class Menu{
       } else {
         System.out.println("That square is already taken. Please choose another.");
       }
+
+      System.out.println(board.checkWin());
     }
 
     System.out.println(board.toString());
@@ -115,7 +121,6 @@ public class Menu{
   }
   
   public int getIntInput(String inputMessage){
-    Scanner input = new Scanner(System.in);
     boolean isValid = false;
     int userInput = 0;
 
@@ -126,6 +131,7 @@ public class Menu{
         userInput = input.nextInt();
       } else {
         System.out.println("Invalid input. Please enter a valid integer.");
+        input.next();
       }
     }
     

@@ -5,31 +5,31 @@ public class Board{
                         4,5,6,
                         7,8,9}; // 1-9 = empty, -1 = X, 0 = O
 
-  public int checkWin(){// Returns: 1 = no win, -1 = X wins, 0 = O wins
+  public int checkWin(){// 0 = noWin, -1 = X, 0 = O
+    int winCondition = 1;
     // Check diagonals
-    if (grid[0] == grid[4] && grid[4] == grid[8] && (grid[0] == -1 || grid[0] == 0)) {
-      return grid[0];
+    if (grid[0] == grid[4] && grid[4] == grid[8]) {
+      winCondition = grid[0];
     }
 
-    if (grid[2] == grid[4] && grid[4] == grid[6] && (grid[2] == -1 || grid[2] == 0)) {
-      return grid[2];
+    if (grid[2] == grid[4] && grid[4] == grid[6]) {
+      winCondition = grid[2];
     }
 
-    // Check rows
+    // Check rows and columns
     for (int row = 0; row < 9; row+=3) {
-      if (grid[row] == grid[row + 1] && grid[row + 1] == grid[row + 2] && (grid[row] == -1 || grid[row] == 0)){
-        return grid[row];
+      if (grid[row] == grid[row + 1] && grid[row + 1] == grid[row + 2]){
+        winCondition = grid[row];
       }
     }
 
-    // Check columns
     for (int col = 0; col < 3; col++){
-      if (grid[col] == grid[col + 3] && grid[col + 3] == grid[col + 6] && (grid[col] == -1 || grid[col] == 0)){
-        return grid[col];
+      if (grid[col] == grid[col + 3] && grid[col + 3] == grid[col + 6]){
+        winCondition = grid[col];
       }
     }
     
-    return 1; // No win (return 1 instead of 0 to avoid confusion with O wins)
+    return winCondition;
   }
   
   public int[] getGrid(){
@@ -38,15 +38,6 @@ public class Board{
 
   public void setGridSquare(int place, int value){
     grid[place] = value;
-  }
-  public void setGridSquare(int place, String value){
-    if (value.toUpperCase().equals("X")){
-      grid[place] = -1;
-    } else if (value.toUpperCase().equals("O")){
-      grid[place] = 0;
-    } else{
-      System.out.println("Invalid input. Please enter a valid value.");
-    }
   }
 
   public String toString(){
