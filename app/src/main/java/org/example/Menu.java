@@ -47,8 +47,8 @@ public class Menu{
     while (!exitLoop){
       System.out.println("Which mode would you like to play?\n");
       System.out.println("1. Player vs Player");
-      System.out.println("2. Player vs AI");
-      System.out.println("3. AI vs AI");
+      //System.out.println("2. Player vs AI");
+      //System.out.println("3. AI vs AI");
       System.out.println("-1. Back");
       int userInput = getIntInput("Enter the number of your choice: ");
 
@@ -59,11 +59,11 @@ public class Menu{
           break;
         case 2:
           //playPvAI();
-          System.out.println("This feature is not yet implemented.");
+          //System.out.println("This feature is not yet implemented.");
           break;
         case 3:
           //playAIvAI();
-          System.out.println("This feature is not yet implemented.");
+          //System.out.println("This feature is not yet implemented.");
           break;
         case -1:
           mainMenu();
