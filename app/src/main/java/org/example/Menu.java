@@ -78,7 +78,6 @@ public class Menu{
     Board board = new Board();
     boolean whosTurn = true; // true = X, false = O
     int turn = 1;
-
     
     while (board.checkWin() == 1 && turn <= 9){
       System.out.println(board.toString());
