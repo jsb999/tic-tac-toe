@@ -3,6 +3,8 @@ package org.example;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.File;
 
 public class FileSystemsManager{
@@ -15,6 +17,11 @@ public class FileSystemsManager{
   
   // Create a new file function
   public void createFile(String fileName) {
+    //check if the file name is valid
+    if (!fileName.endsWith(".txt")){
+      fileName += ".txt";
+    }
+    
     try{
       // Check if the file already exists
       if (new File("gamesaves/" + fileName).exists()){
@@ -32,6 +39,10 @@ public class FileSystemsManager{
 
   // Write to a file function
   public void fileWrite(String fileName, String text, boolean append){
+    if (!fileName.endsWith(".txt")){
+      fileName += ".txt";
+    }
+    
     try (BufferedWriter writer = new BufferedWriter(new FileWriter("gamesaves/" + fileName, append))) {
       writer.write(text);
       System.out.println("Data successfully written to file.");
@@ -81,6 +92,27 @@ public class FileSystemsManager{
     for (int i = 0; i < fileNames.length; i++){
       output += fileNames[i] + "\n";
     }
+    return output;
+  }
+
+  // file convert to string
+  public String fileToString(String fileName){
+    String output = "";
+    if (!fileName.endsWith(".txt")){
+      fileName += ".txt";
+    }
+  
+    try (BufferedReader reader = new BufferedReader(new FileReader("gamesaves/" + fileName))) {
+      String line;
+      while ((line = reader.readLine()) != null) {
+        output += line + "\n";
+      }
+    } catch (IOException e) {
+      System.out.println("Error reading file.");
+      e.printStackTrace();
+      return null; 
+    }
+
     return output;
   }
 }
