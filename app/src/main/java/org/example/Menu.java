@@ -157,6 +157,7 @@ public class Menu{
       System.out.println(manager.fileToString(fileName));
       
       //play again loop
+      input.nextLine();
       boolean temploop = true;
       while (temploop){
         temploop = false;
