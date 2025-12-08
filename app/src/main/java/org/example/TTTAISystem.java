@@ -73,8 +73,8 @@ public  class TTTAISystem{
   private int getEmpty(Board boardGrid){
     int rand = (int)(Math.random() * 9);
 
-    while (boardGrid.getGrid()[rand] != -1 && boardGrid.getGrid()[rand] != 0){
-        rand = (int)(Math.random() * 9);
+    while (boardGrid.getGrid()[rand] == -1 || boardGrid.getGrid()[rand] == 0){
+      rand = (int)(Math.random() * 9);
     }
     
     return rand;
@@ -83,9 +83,9 @@ public  class TTTAISystem{
   private int countFilled(int[] grid) {
       int count = 0;
       for (int temp : grid) {
-          if (temp == 0 || temp == -1){
-            count++;
-          }
+        if (temp == 0 || temp == -1){
+          count++;
+        }
       }
       return count;
   }
