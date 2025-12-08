@@ -5,7 +5,7 @@ public class Board{
                         4,5,6,
                         7,8,9}; // 1-9 = empty, -1 = X, 0 = O
 
-  public int checkWin(){// 0 = noWin, -1 = X, 0 = O
+  public int checkWin(){// 1 = noWin, -1 = X, 0 = O
     int winCondition = 1;
     // Check diagonals
     if (grid[0] == grid[4] && grid[4] == grid[8]) {

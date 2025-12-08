@@ -33,7 +33,7 @@ public  class TTTAISystem{
     }
 
     //the defult option
-    if (boardGrid.checkWin() == 0){
+    if (boardGrid.checkWin() == 1){
       return getEmpty(boardGrid);
     }
 
